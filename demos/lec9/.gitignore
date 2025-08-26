@@ -1,5 +1,0 @@
-node_modules
-serviceAccount.json
-.env
-.DS_Store
-dist
