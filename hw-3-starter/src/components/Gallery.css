@@ -17,6 +17,7 @@
 
 .row {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     gap: 0;
@@ -28,7 +29,6 @@
     width: 6rem;
     height: 4rem;
     border-radius: 8px;
-    background-color: #1a1a1a;
     font-size: 2rem;
     display: flex;
     align-items: center;

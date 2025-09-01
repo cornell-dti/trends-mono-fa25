@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Paginator from "./Paginator.tsx";
 import "./index.css";
+import Gallery from "./components/Gallery.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
-        <Paginator maxLimit={10} />
+        <Gallery itemsPerPage={0} data={[]} />
     </React.StrictMode>
 );
