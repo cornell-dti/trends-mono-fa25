@@ -1,7 +1,7 @@
 const trends = {
     code: "INFO1998",
-    location: "Gates 114",
-    instructors: ["Simon", "Oscar", "Chris"],
+    location: "Upson 206",
+    instructors: ["Simon", "Jacqueline", "Chris"],
     "ugly property name": "pretty_result",
     schedule: {
         day: "Monday",
