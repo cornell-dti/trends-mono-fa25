@@ -224,3 +224,22 @@ function parseJson(jsonString: string): any {
     return null;
   }
 }
+
+// object and array destructuring
+const [a, b] = [1, 2];
+// a = 1, b = 2
+
+const someMovie: Movie = {
+  length: 100,
+  review: {
+    text: "Really good",
+    rating: 5,
+  },
+};
+
+const {
+  length: movieLength,
+  review: { text, rating },
+} = someMovie;
+
+// here, movieLength = 100, text = 'really good', and rating = 5

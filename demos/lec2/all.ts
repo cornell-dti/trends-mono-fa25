@@ -14,8 +14,6 @@ let scores: number[] = [85, 90, 78];
 // Tuple allows mixed types in a fixed-length array
 let person: [string, number] = ["Bob", 30];
 
-const [a, b] = [1, 2];
-
 // 3. Functions
 // Function with parameters and return type
 function greet(userName: string): string {
