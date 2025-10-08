@@ -1,0 +1,80 @@
+.courseCard {
+  border: 1px black solid;
+  border-radius: 8px;
+  padding: 8px;
+  text-align: left;
+  box-shadow: 0 0 10px 4px #efefef;
+}
+
+.courseCode {
+  color: rgb(133, 133, 133);
+  font-size: 14px;
+  margin: 0;
+}
+
+.courseTitle {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #3d3d3d;
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.semesterBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0.875rem 1.125rem;
+  border: 2px solid #d8d8d8;
+  border-radius: 11px;
+  min-width: 400px;
+}
+
+.newSemesterButton {
+  background: #4d7d92;
+  border-radius: 3px;
+  min-height: 2.5rem;
+  min-width: 9rem;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  margin-bottom: 2rem;
+}
+
+.semesterTitle {
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.semesterContainer {
+  display: flex;
+  gap: 64px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dropdownMenu {
+  position: absolute;
+  background-color: #efefef;
+  width: 207px;
+}
+
+.courseSearchBar {
+  display: flex;
+  width: 200px;
+}
+
+.dropdownOption {
+  margin: 0;
+  padding: 0.5rem 0;
+}
+
+.dropdownOption:hover {
+  background-color: #d8d8d8;
+}
