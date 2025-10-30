@@ -49,6 +49,12 @@ export const fetchCourseDetails = async (
       };
     };
 
+    const key = "I love web development!";
+    const postResponse = await axios.post("http://localhost:8080/api/", {
+      key,
+    });
+    const postResponseText = postResponse.data.message;
+
     // Find the specific course in the API response by matching the catalogNbr
     const courseData = data.data.classes.find(
       (course: ApiCourseData) => Number(course.catalogNbr) === catalogNbr
@@ -64,7 +70,7 @@ export const fetchCourseDetails = async (
 
     // Get description
     if (courseData.description) {
-      details.description = courseData.description;
+      details.description = `${postResponseText} ${courseData.description}`;
     }
 
     // Get credits from the first enroll group
