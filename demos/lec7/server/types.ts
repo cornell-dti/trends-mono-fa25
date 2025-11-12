@@ -5,6 +5,7 @@ export type Instructor = {
 };
 
 export type Course = {
+  id?: string;
   subject: string;
   catalogNbr: number;
   titleShort: string;

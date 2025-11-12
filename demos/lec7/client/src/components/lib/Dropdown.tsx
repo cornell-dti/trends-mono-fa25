@@ -26,7 +26,7 @@ const Dropdown = ({ options, onChange }: DropdownProps) => {
     onChange(value);
   };
 
-  const searchOptions = options.filter(option =>
+  const searchOptions = options.filter((option) =>
     getCourseCode(option)
       .toLocaleLowerCase()
       .includes(query.toLocaleLowerCase())
@@ -36,12 +36,12 @@ const Dropdown = ({ options, onChange }: DropdownProps) => {
     <div className="dropdown">
       <input
         value={query}
-        onChange={e => setQuery(e.target.value)}
+        onChange={(e) => setQuery(e.target.value)}
         className="courseSearchBar"
       />
       {query.length >= 2 && (
         <div className="dropdownMenu">
-          {searchOptions.map(option => (
+          {searchOptions.map((option) => (
             <p
               className="dropdownOption"
               key={option.titleShort}

@@ -9,7 +9,9 @@ import {
 } from "../util";
 
 const CoursePlan = () => {
-  const [semesters, setSemesters] = useState<{ id: string; name: string }[]>([]);
+  const [semesters, setSemesters] = useState<{ id: string; name: string }[]>(
+    []
+  );
   const [allCourses, setAllCourses] = useState<Course[]>([]);
   const [semester, setSemester] = useState("SP25");
   const [subject, setSubject] = useState("CS");
@@ -31,12 +33,6 @@ const CoursePlan = () => {
     const result = await populateCoursesFromCornell(semester, subject);
     setPopulateMessage(result.message);
 
-    if (result.success) {
-      // Refresh the courses list
-      const coursesData = await getAllCourses();
-      setAllCourses(coursesData);
-    }
-
     setIsPopulating(false);
   };
 
@@ -46,7 +42,7 @@ const CoursePlan = () => {
         getAllSemesters(),
         getAllCourses(),
       ]);
-      setSemesters(semestersData);
+      setSemesters(semestersData.sort((a, b) => a.semNum - b.semNum));
       setAllCourses(coursesData);
     };
     fetchData();
@@ -54,9 +50,23 @@ const CoursePlan = () => {
 
   return (
     <div>
-      <div style={{ marginBottom: "20px", padding: "15px", border: "1px solid #ccc", borderRadius: "8px" }}>
+      <div
+        style={{
+          marginBottom: "20px",
+          padding: "15px",
+          border: "1px solid #ccc",
+          borderRadius: "8px",
+        }}
+      >
         <h3>Populate Courses from Cornell API</h3>
-        <div style={{ display: "flex", gap: "10px", alignItems: "center", marginTop: "10px" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: "10px",
+            alignItems: "center",
+            marginTop: "10px",
+          }}
+        >
           <label>
             Semester:
             <input
@@ -86,7 +96,9 @@ const CoursePlan = () => {
           </button>
         </div>
         {populateMessage && (
-          <div style={{ marginTop: "10px", padding: "10px", backgroundColor: "#f0f0f0", borderRadius: "4px" }}>
+          <div
+            style={{ marginTop: "10px", padding: "10px", borderRadius: "4px" }}
+          >
             {populateMessage}
           </div>
         )}

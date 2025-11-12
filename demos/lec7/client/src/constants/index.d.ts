@@ -5,6 +5,7 @@ type Instructor = {
 };
 
 type Course = {
+  id?: string;
   subject: string;
   catalogNbr: number;
   titleShort: string;

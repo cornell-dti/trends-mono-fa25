@@ -7,6 +7,7 @@ import {
   getCoursesForSemester,
   addCourseToSemester as addCourseToSemesterAPI,
   updateCourseDetailsVisibility,
+  deleteCourseFromSemester,
 } from "../util";
 
 type SemesterProps = {
@@ -114,6 +115,13 @@ const Semester = ({ id, name, allCourses }: SemesterProps) => {
     );
   };
 
+  const handleDelete = async (course: Course) => {
+    if (course.id) {
+      await deleteCourseFromSemester(id, course.id);
+      setCourses((prev) => prev.filter((c) => c.id !== course.id));
+    }
+  };
+
   return (
     <div className="semesterBox">
       <div className="semesterHeader">
@@ -130,6 +138,7 @@ const Semester = ({ id, name, allCourses }: SemesterProps) => {
                 key={`${courseKey}-${index}`}
                 course={course}
                 onToggleDetails={handleToggleDetails}
+                onHandleDelete={handleDelete}
                 isLoading={loading[courseKey]}
               />
             );

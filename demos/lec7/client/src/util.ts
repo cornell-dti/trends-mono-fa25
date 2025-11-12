@@ -108,7 +108,7 @@ export const fetchCourseDetails = async (
  * Fetches all semesters from the server
  */
 export const getAllSemesters = async (): Promise<
-  { id: string; name: string }[]
+  { id: string; name: string; semNum: number }[]
 > => {
   try {
     const response = await axios.get(`${API_BASE_URL}/semesters`);
@@ -184,28 +184,6 @@ export const deleteCourseFromSemester = async (
     return true;
   } catch (error) {
     console.error("Error deleting course from semester:", error);
-    return false;
-  }
-};
-
-/**
- * Updates the notes for a course in a semester
- */
-export const updateCourseNotes = async (
-  semesterId: string,
-  courseId: string,
-  notes: string
-): Promise<boolean> => {
-  try {
-    await axios.patch(
-      `${API_BASE_URL}/semesters/${semesterId}/courses/${courseId}/notes`,
-      {
-        notes,
-      }
-    );
-    return true;
-  } catch (error) {
-    console.error("Error updating course notes:", error);
     return false;
   }
 };

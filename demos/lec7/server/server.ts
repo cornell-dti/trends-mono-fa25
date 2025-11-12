@@ -7,8 +7,6 @@ import {
   fetchCoursesForSemester,
   addCourseToSemester,
   deleteCourseFromSemester,
-  updateCourseNotes,
-  updateCourseDetails,
   addCourseToDB,
   fetchAllCourses,
 } from "./firebaseUtils";
@@ -191,51 +189,15 @@ app.delete("/api/semesters/:semesterId/courses/:courseId", async (req, res) => {
   }
 });
 
-// PATCH update course notes
-app.patch(
-  "/api/semesters/:semesterId/courses/:courseId/notes",
-  async (req, res) => {
-    try {
-      const { semesterId, courseId } = req.params;
-      const { notes } = req.body;
-      if (notes === undefined) {
-        throw new Error("Notes field is required");
-      }
-      const success = await updateCourseNotes(semesterId, courseId, notes);
-      if (!success) {
-        throw new Error("Failed to update course notes");
-      }
-      res.status(200).json({ message: "Course notes updated successfully" });
-    } catch (e: any) {
-      res.status(400).json({ error: e.message });
-    }
+// GET all courses in Courses collection
+app.get("/api/courses", async (req, res) => {
+  try {
+    const courses = await fetchAllCourses();
+    res.status(200).json(courses);
+  } catch (e: any) {
+    res.status(400).json({ error: e.message });
   }
-);
-
-// PATCH update course details visibility
-app.patch(
-  "/api/semesters/:semesterId/courses/:courseId/details",
-  async (req, res) => {
-    try {
-      const { semesterId, courseId } = req.params;
-      const { showDetails } = req.body;
-      if (showDetails === undefined) {
-        throw new Error("showDetails field is required");
-      }
-      const success = await updateCourseDetails(
-        semesterId,
-        courseId,
-        showDetails
-      );
-      if (!success) {
-        throw new Error("Failed to update course details");
-      }
-      res.status(200).json({ message: "Course details updated successfully" });
-    } catch (e: any) {
-      res.status(400).json({ error: e.message });
-    }
-  }
-);
+});
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
