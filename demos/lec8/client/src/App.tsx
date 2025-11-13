@@ -1,13 +1,16 @@
 import "./App.css";
+import AuthUserProvider from "./auth/AuthUserProvider";
 import CoursePlan from "./components/CoursePlan";
 import Header from "./components/Header";
 
 const App = () => {
   return (
     <div>
-      <Header />
-      <h1>CoursePlan Clone</h1>
-      <CoursePlan />
+      <AuthUserProvider>
+        <Header />
+        <h1>CoursePlan Clone</h1>
+        <CoursePlan />
+      </AuthUserProvider>
     </div>
   );
 };
