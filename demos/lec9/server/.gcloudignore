@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.git/
+.gitignore
+.DS_Store
+README.md
+# Explicitly include .env if needed (it is included by default if not listed here)
+
+
