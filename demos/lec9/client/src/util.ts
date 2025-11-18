@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:8080/api";
+const API_BASE_URL = process.env.API_BASE_URL || "http://localhost:8080/api";
 
 /**
  * Makes an array with the integers from 0 (inclusive) to n (exclusive).
@@ -53,7 +53,7 @@ export const fetchCourseDetails = async (
 
     const key = "I love web development!";
     const postResponse = await axios.post("http://localhost:8080/api/", {
-      key,
+      key
     });
     const postResponseText = postResponse.data.message;
 
@@ -107,9 +107,11 @@ export const fetchCourseDetails = async (
 /**
  * Fetches all semesters from the server
  */
-export const getAllSemesters = async (): Promise<
-  { id: string; name: string; semNum: number }[]
-> => {
+export const getAllSemesters = async (): Promise<{
+  id: string;
+  name: string;
+  semNum: number;
+}[]> => {
   try {
     const response = await axios.get(`${API_BASE_URL}/semesters`);
     return response.data;
@@ -200,7 +202,7 @@ export const updateCourseDetailsVisibility = async (
     await axios.patch(
       `${API_BASE_URL}/semesters/${semesterId}/courses/${courseId}/details`,
       {
-        showDetails,
+        showDetails
       }
     );
     return true;
@@ -237,13 +239,16 @@ export const populateCoursesFromCornell = async (
     return {
       success: true,
       message: response.data.message,
-      count: response.data.courses?.length || 0,
+      count: response.data.courses?.length || 0
     };
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error populating courses:", error);
     return {
       success: false,
-      message: error.response?.data?.error || "Failed to populate courses",
+      message:
+        axios.isAxiosError(error) && error.response?.data?.error
+          ? error.response.data.error
+          : "Failed to populate courses"
     };
   }
 };
