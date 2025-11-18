@@ -5,7 +5,10 @@ const { a, b: secondProp, d = 4 } = obj;
 console.log([a, secondProp, d].join(", "));
 
 // Nested object destructuring
-const nestedObj = { x: { y: 10, z: 20 } };
+const nestedObj = {
+    x:{ y: 10, z: 20 },
+    w: 30
+};
 const {
     x: { y, z: depth },
 } = nestedObj;

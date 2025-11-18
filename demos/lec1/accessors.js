@@ -17,6 +17,11 @@ console.log(trends);
 console.log(trends.code);
 console.log(trends["code"]);
 console.log(trends["ugly property name"]);
-// console.log(trends.class_representation); // we'll see this in the later demo
+console.log(trends.class_representation); // we'll see this in the later demo
 
+// trends.code = "INFO1999";
 // trends = {}; // eslint is warning!
+
+const x = 7;
+console.log(x);
+// x = 8;
