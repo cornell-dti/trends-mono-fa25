@@ -33,12 +33,12 @@ const Header = () => {
         width: "70vw",
         display: "flex",
         justifyContent: "flex-end",
-        gap: "12px",
+        gap: "12px"
       }}
     >
       {isLoggedIn && user && <p>Hello, {user.displayName}</p>}
       <button onClick={handleLoginClick}>
-        {isLoggedIn ? "Sign Out" : "Log In"}
+        {isLoggedIn ? "Sign Out, " + user?.displayName : "Log In"}
       </button>
     </div>
   );
