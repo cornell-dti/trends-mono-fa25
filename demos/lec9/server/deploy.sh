@@ -28,7 +28,9 @@ fi
 gcloud run deploy lec9-server \
   --source . \
   --region us-central1 \
-  --allow-unauthenticated
+  --allow-unauthenticated \
+  --min-instances=0 \
+  --cpu-throttling
 
 echo "Deployment complete!"
 

@@ -62,7 +62,7 @@ chmod +x deploy.sh
 Run the command manually in PowerShell or Command Prompt:
 
 ```powershell
-gcloud run deploy lec9-server --source . --region us-central1 --allow-unauthenticated --project YOUR_PROJECT_ID
+gcloud run deploy lec9-server --source . --region us-central1 --allow-unauthenticated --min-instances=0 --cpu-throttling --project YOUR_PROJECT_ID
 ```
 
 This command does the following:
