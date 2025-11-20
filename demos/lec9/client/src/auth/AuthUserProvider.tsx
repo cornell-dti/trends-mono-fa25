@@ -9,30 +9,28 @@ import {
 import { auth } from "../firebase";
 
 type AuthData = {
-  user?: User | null;
+  user: User | null;
+  loading: boolean;
 };
 
-const AuthUserContext = createContext<AuthData>({ user: null });
+const AuthUserContext = createContext<AuthData>({ user: null, loading: true });
 
 export default function AuthUserProvider({
   children,
 }: {
   readonly children: ReactNode;
 }) {
-  const [user, setUser] = useState<AuthData>({ user: null });
+  const [authState, setAuthState] = useState<AuthData>({ user: null, loading: true });
+
   useEffect(() => {
-    auth.onAuthStateChanged(async (userAuth) => {
-      // What should happen when the auth changes?
-      if (userAuth) {
-        setUser({ user: userAuth });
-      } else {
-        setUser({ user: null });
-      }
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+      setAuthState({ user: userAuth, loading: false });
     });
+    return unsubscribe;
   }, []);
 
   return (
-    <AuthUserContext.Provider value={user}>{children}</AuthUserContext.Provider>
+    <AuthUserContext.Provider value={authState}>{children}</AuthUserContext.Provider>
   );
 }
 
