@@ -93,7 +93,9 @@ gcloud run deploy lec9-server \
 
 ## Project Structure
 
-- `Dockerfile`: Defines the container image.
+- `Dockerfile`: Defines the container image using a **multi-stage build**.
+  - **Stage 1 (Builder)**: Installs all dependencies and compiles TypeScript to JavaScript.
+  - **Stage 2 (Production)**: Copies only the compiled `dist/` folder and installs production dependencies, ensuring a small and secure final image.
 - `.gcloudignore`: Specifies files to exclude when uploading to Cloud Build (ensures `node_modules` isn't uploaded, but `.env` is included).
 - `deploy.sh`: Helper script for deployment.
 - `server.ts`: Updated to use `dotenv` and `process.env.PORT`.
